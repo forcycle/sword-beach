@@ -88,6 +88,7 @@ NFC_STATUS Pnx_Print(PNX_HANDLE pNx,const char *fmt, ...)
 	return NFC_RES_OK;
 }
 
+#define RELEASE 1
 static void Pnx_Cmd_Usage( char * pname,PNX_HEL_FLG pnflg)
 {
     if( pnflg == CMM)
@@ -144,8 +145,12 @@ static void Pnx_Cmd_Usage( char * pname,PNX_HEL_FLG pnflg)
     printf( "                 \t\t%d = 106 Kbps\n",_106_KBPS );
     printf( "                 \t\t%d = 212 Kbps\n",_212_KBPS );
     printf( "                 \t\t%d = 424 Kbps\n",_424_KBPS );
+#if defined RELEASE
+        "\tIf you meet some problem, please contact nfcsphinx@gamil.com\n\n");
+#else
     printf( "\tIf you meet some problem, please contact xiaohua.wang@nxp.com\n" );
     printf( "\tCopyright (c) 2011-2012, NXP Semiconductors N.V.\n\n" );
+#endif
     return;
 }
 
