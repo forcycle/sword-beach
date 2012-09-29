@@ -28,6 +28,9 @@
 //      Revision 1.5  2012/03/21 16:08:37  xiaohua.wang@nxp.com
 //      Add supported for Google Galaxy Nexus
 //
+//      Revision 1.6  2012/09/28 21:17:01  xiaohua.wang@nxp.com
+//      Fix Reader Jewel and Topaz card ID issue
+//
 //=============================================================================
 #include <pnx.h>
 
@@ -961,13 +964,13 @@ NFC_STATUS Pnx_Get_Tag(PNX_HANDLE pNx,uint8_t *r_buf)
             *r_buf = 0;
             return NFC_RES_OK;
         }
-        for(i = 0; i < hci_resplen - 5; i++)//hci_resplen - 5
+        for(i = 0; i < hci_resplen - 7; i++)//hci_resplen - 5
         {
         if(i==0)
         {
             printf("\n\t\t--Jewel/Topaz code\n\t\t  0x");
         }
-            printf("%02X", hci_resp[4+i]);
+            printf("%02X", hci_resp[6+i]);
         }
         printf("\n");
     }

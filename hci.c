@@ -28,6 +28,9 @@
 //      Revision 1.5  2012/03/21 16:08:37  xiaohua.wang@nxp.com
 //      Add supported for Google Galaxy Nexus
 //
+//      Revision 1.6  2012/09/28 21:17:01  xiaohua.wang@nxp.com
+//      Fix Reader Jewel and Topaz card ID issue
+//
 //=============================================================================
   
 #include <pnx.h>
@@ -132,7 +135,8 @@ const general_hci_table nfc_hci_tab[] =
   {NFC_HCI_M_B_P,0x04,{0x80,0x83,0x02,0x04}},//83 02 04; // Type B PUPI
   {NFC_HCI_M_F_C,0x04,{0x80,0x84,0x02,0x01}},//84 02 01; // Felica System code
   {NFC_HCI_M_I_T,0x04,{0x80,0x85,0x02,0x0B}},//85 02 0B; // NFC-T NFCID3 
-  {NFC_HCI_M_J_T,0x04,{0x80,0x87,0x02,0x00}},//87 20 00; // Jewel/Topaz (tag must be in the field to read out data)
+  //{NFC_HCI_M_J_T,0x04,{0x80,0x87,0x20,0x00}},//87 20 00; // Jewel/Topaz (tag must be in the field to read out data)
+  {NFC_HCI_M_J_T,0x0A,{0x80,0x87,0x23,0x78,0x00,0x00,0x00,0x00,0x00,0x00}},//87 23 78 00 00 00 00 00 00 ; // Jewel/Topaz (tag must be in the field to read out data)
   {NFC_HCI_M_R_I,0x04,{0x80,0x88,0x02,0x01}},//88 02 01; // ISO15693 read inventory
   /*restart polling */
   {NFC_HCI_R_A_U,0x03,{0x80,0x82,0x75}},//82 75; // Type A 
