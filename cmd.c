@@ -28,6 +28,9 @@
 //      Revision 1.5  2012/03/21 16:08:37  xiaohua.wang@nxp.com
 //      Add supported for Google Galaxy Nexus
 //
+//      Revision 1.6  2012/12/09 19:12:21  xiaohua.wang@nxp.com
+//      Display Application processor CPU core information
+//
 //=============================================================================
   
 
@@ -214,6 +217,7 @@ NFC_STATUS Pnx_Cmd_Handle(PNX_HANDLE pNx)
                 break;
                 
             case PNX_OPT_PCV:
+                system("cat /proc/cpuinfo");
                 if( Pnx_Get_Pvc(pNx) !=  NFC_RES_OK)    
                 {
                     printf("Pnx_Get_Pvc [FAIL]\n");
